@@ -1,6 +1,9 @@
 name: Deploy to Production
 run-name: Deploy to Production
 
+on:
+  workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
