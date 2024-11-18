@@ -3,11 +3,22 @@ run-name: Deploy to Production
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: Choose an environment to deploy to
+        options:
+          - "dev"
+          - "stage"
+          - "prod1"
+          - "prod2"
+          - "none"
+        required: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: production  # Specify the environment with required approvals
+    environment: ${{ inputs.environment }}
     steps:
       - name: Check out code
         uses: actions/checkout@v2
